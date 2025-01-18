@@ -20,6 +20,12 @@ bin-release/
 *.class
 *.bak
 
+# 不忽略 web.xml 文件
+!web.xml
+
+# 忽略 out 目录及其所有内容
+/out/
+
 # Project files, i.e. `.project`, `.actionScriptProperties` and `.flexProperties`
 # should NOT be excluded as they contain compiler settings and other important
 # information for Eclipse / Flash Builder.
