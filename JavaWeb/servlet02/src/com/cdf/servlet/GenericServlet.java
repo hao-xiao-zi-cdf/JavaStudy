@@ -29,7 +29,7 @@ public abstract class GenericServlet implements Servlet {
 
     @Override
     public String getServletInfo() {
-        return "";
+        return " ";
     }
 
     @Override
