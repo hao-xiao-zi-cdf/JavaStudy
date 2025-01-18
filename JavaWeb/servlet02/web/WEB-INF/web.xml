@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
+         version="6.0">
+    <servlet>
+        <servlet-name>ATest</servlet-name>
+        <servlet-class>com.cdf.servlet.AServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ATest</servlet-name>
+        <url-pattern>/aaa</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>BTest</servlet-name>
+        <servlet-class>com.cdf.servlet.BServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>BTest</servlet-name>
+        <url-pattern>/bbb</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>CTest</servlet-name>
+        <servlet-class>com.cdf.servlet.CServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>CTest</servlet-name>
+        <url-pattern>/ccc</url-pattern>
+    </servlet-mapping>
+</web-app>
