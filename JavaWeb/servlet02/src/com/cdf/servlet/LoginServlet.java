@@ -1,5 +1,6 @@
 package com.cdf.servlet;
 
+import jakarta.servlet.ServletConfig;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.ServletRequest;
 import jakarta.servlet.ServletResponse;
@@ -15,6 +16,13 @@ import java.io.PrintWriter;
  * Time: 21:08
  */
 public class LoginServlet extends GenericServlet{
+
+    //如果需要在这里重写init()方法，怎么办？
+    @Override
+    public void init(){
+        System.out.println("hhhh");
+    }
+
     @Override
     public void service(ServletRequest servletRequest, ServletResponse servletResponse) throws ServletException, IOException {
         System.out.println("Hello LoginServlet!");
@@ -24,5 +32,8 @@ public class LoginServlet extends GenericServlet{
         PrintWriter out = servletResponse.getWriter();
         out.print("Hello World!");
         out.print("<h1>你好呀！</h1>");
+
+        //在这里想要使用ServletConfig
+        out.println(getServletConfig());
     }
 }
