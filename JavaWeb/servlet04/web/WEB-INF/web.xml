@@ -3,6 +3,17 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
          version="6.0">
+    <!--上下文参数配置信息-->
+    <context-param>
+        <param-name>user</param-name>
+        <param-value>root</param-value>
+    </context-param>
+
+    <context-param>
+        <param-name>password</param-name>
+        <param-value>root</param-value>
+    </context-param>
+
     <servlet>
         <servlet-name>AServlet</servlet-name>
         <servlet-class>com.cdf.servlet.AServlet</servlet-class>
@@ -21,5 +32,15 @@
     <servlet-mapping>
         <servlet-name>BServlet</servlet-name>
         <url-pattern>/BServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ContextServlet</servlet-name>
+        <servlet-class>com.cdf.servlet.ContextServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ContextServlet</servlet-name>
+        <url-pattern>/context</url-pattern>
     </servlet-mapping>
 </web-app>
