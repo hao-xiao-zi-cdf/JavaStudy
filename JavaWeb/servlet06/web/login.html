@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>欢迎页面</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+    .container {
+      text-align: center;
+      color: #fff;
+      animation: fadeIn 2s ease-in-out;
+    }
+    h1 {
+      font-size: 3em;
+      margin-bottom: 0.5em;
+      animation: bounce 2s infinite;
+    }
+    p {
+      font-size: 1.2em;
+      margin-bottom: 1em;
+    }
+    .button {
+      display: inline-block;
+      padding: 10px 20px;
+      font-size: 1em;
+      color: #fff;
+      background-color: #ff6f61;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+    }
+    .button:hover {
+      background-color: #ff3b2f;
+    }
+    .floating-objects {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+    }
+    .object {
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      background-color: rgba(255, 255, 255, 0.5);
+      border-radius: 50%;
+      animation: float 10s infinite ease-in-out;
+    }
+    .object:nth-child(odd) {
+      background-color: rgba(255, 255, 255, 0.7);
+    }
+    @keyframes float {
+      0% { transform: translateY(0) translateX(0); }
+      50% { transform: translateY(-20px) translateX(20px); }
+      100% { transform: translateY(0) translateX(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+      40% { transform: translateY(-30px); }
+      60% { transform: translateY(-15px); }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h1>欢迎来到我的网站</h1>
+  <p>这里有一些有趣的小物件和东西。</p>
+  <a href="#" class="button">了解更多</a>
+</div>
+<div class="floating-objects">
+  <div class="object" style="top: 10%; left: 20%;"></div>
+  <div class="object" style="top: 30%; left: 70%;"></div>
+  <div class="object" style="top: 50%; left: 40%;"></div>
+  <div class="object" style="top: 70%; left: 80%;"></div>
+  <div class="object" style="top: 90%; left: 10%;"></div>
+</div>
+</body>
+</html>
