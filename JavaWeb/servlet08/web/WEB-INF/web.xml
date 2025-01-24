@@ -13,4 +13,24 @@
         <servlet-name>RequestServlet</servlet-name>
         <url-pattern>/request</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>RequestServlet1</servlet-name>
+        <servlet-class>com.cdf.servlet.RequestTestServlet1</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>RequestServlet1</servlet-name>
+        <url-pattern>/request1</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>RequestServlet2</servlet-name>
+        <servlet-class>com.cdf.servlet.RequestTestServlet2</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>RequestServlet2</servlet-name>
+        <url-pattern>/request2</url-pattern>
+    </servlet-mapping>
 </web-app>

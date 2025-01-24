@@ -12,31 +12,42 @@ import java.util.Map;
 import java.util.Set;
 
 public class RequestTestServlet extends HttpServlet {
+//    获取请求协议中的数据name值
+//    @Override
+//    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+//            throws ServletException, IOException {
+//        //获取map集合
+//        Map<String,String[]> requestMap = request.getParameterMap();
+//
+//        //获取请求协议中的数据name值
+//        Set<String> nameSet = requestMap.keySet();
+//
+//        //遍历集合nameSet，取出每个name属性值
+//        Iterator<String> it = nameSet.iterator();
+//
+//        while(it.hasNext()){
+//            System.out.println(it.next());
+//        }
+//    }
+
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        //获取map集合
+        Map<String,String[]> requestMap = request.getParameterMap();
 
-        response.setContentType("text/html");
+        //获取请求协议中的数据name值
+        Set<String> nameSet = requestMap.keySet();
 
-        PrintWriter out = response.getWriter();
-        out.print("request：" + request);
-//      request：org.apache.catalina.connector.RequestFacade@3e9b7c8
-    }
+        //遍历集合nameSet，取出每个name属性值
+        Iterator<String> it = nameSet.iterator();
 
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response){
-        //获取浏览器往服务器发送的请求协议中的数据集合
-        Map<String,String[]> map = request.getParameterMap();
-
-        Set<String> set = map.keySet();
-
-        Iterator iterator = set.iterator();
-
-        //遍历map集合，获取请求协议中的name属性
-        while(iterator.hasNext()){
-            System.out.println(iterator.next() + "=");
-            for(String str:map.get(iterator.next())){
-                System.out.println(str + ",");
+        //获取请求协议数据中的name值及所对应的value值
+        while(it.hasNext()){
+            String value = it.next();
+            String[] str = requestMap.get(value);
+            for(String s:str){
+                System.out.println(value + "=" + s);
             }
         }
     }
