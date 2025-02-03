@@ -6,7 +6,7 @@
 
     <servlet>
         <servlet-name>RequestServlet</servlet-name>
-        <servlet-class>com.cdf.servlet.RequestTestServlet</servlet-class>
+        <servlet-class>com.cdf.dept.RequestTestServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -16,7 +16,7 @@
 
     <servlet>
         <servlet-name>RequestServlet1</servlet-name>
-        <servlet-class>com.cdf.servlet.RequestTestServlet1</servlet-class>
+        <servlet-class>com.cdf.dept.RequestTestServlet1</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -26,7 +26,7 @@
 
     <servlet>
         <servlet-name>RequestServlet2</servlet-name>
-        <servlet-class>com.cdf.servlet.RequestTestServlet2</servlet-class>
+        <servlet-class>com.cdf.dept.RequestTestServlet2</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -36,7 +36,7 @@
 
     <servlet>
         <servlet-name>AServlet</servlet-name>
-        <servlet-class>com.cdf.servlet.AServlet</servlet-class>
+        <servlet-class>com.cdf.dept.AServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -46,7 +46,7 @@
 
     <servlet>
         <servlet-name>BServlet</servlet-name>
-        <servlet-class>com.cdf.servlet.BServlet</servlet-class>
+        <servlet-class>com.cdf.dept.BServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -56,7 +56,7 @@
 
     <servlet>
         <servlet-name>RequestServlet3</servlet-name>
-        <servlet-class>com.cdf.servlet.RequestTestServlet3</servlet-class>
+        <servlet-class>com.cdf.dept.RequestTestServlet3</servlet-class>
     </servlet>
 
     <servlet-mapping>

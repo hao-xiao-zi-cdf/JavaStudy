@@ -5,7 +5,7 @@
          version="6.0">
     <servlet>
         <servlet-name>GetServlet</servlet-name>
-        <servlet-class>com.cdf.servlet.GetServlet</servlet-class>
+        <servlet-class>com.cdf.dept.GetServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -15,7 +15,7 @@
 
     <servlet>
         <servlet-name>PostServlet</servlet-name>
-        <servlet-class>com.cdf.servlet.PostServlet</servlet-class>
+        <servlet-class>com.cdf.dept.PostServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>

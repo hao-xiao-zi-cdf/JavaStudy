@@ -16,7 +16,7 @@
 
     <servlet>
         <servlet-name>AServlet</servlet-name>
-        <servlet-class>com.cdf.servlet.AServlet</servlet-class>
+        <servlet-class>com.cdf.dept.AServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -26,7 +26,7 @@
 
     <servlet>
         <servlet-name>BServlet</servlet-name>
-        <servlet-class>com.cdf.servlet.BServlet</servlet-class>
+        <servlet-class>com.cdf.dept.BServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -36,7 +36,7 @@
 
     <servlet>
         <servlet-name>ContextServlet</servlet-name>
-        <servlet-class>com.cdf.servlet.ContextServlet</servlet-class>
+        <servlet-class>com.cdf.dept.ContextServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>

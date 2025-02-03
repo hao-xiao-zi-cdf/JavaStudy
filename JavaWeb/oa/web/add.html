@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>部门信息表单</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            text-align: left;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <h2>新增部门信息</h2>
+    <form action="list.html" method="get" onsubmit="submitForm()">
+        <div class="form-group">
+            <label for="dept-id">部门编号</label>
+            <input type="text" id="dept-id" name="dept-id" required>
+        </div>
+        <div class="form-group">
+            <label for="dept-name">部门名称</label>
+            <input type="text" id="dept-name" name="dept-name" required>
+        </div>
+        <div class="form-group">
+            <label for="dept-location">部门地点</label>
+            <input type="text" id="dept-location" name="dept-location" required>
+        </div>
+        <input type="submit" value="提交">
+    </form>
+</div>
+
+</body>
+
+</html>
