@@ -23,6 +23,7 @@ import java.sql.SQLException;
 public class deptDetailServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         //获取部门具体编号
         String deptno = request.getParameter("deptno");
 
