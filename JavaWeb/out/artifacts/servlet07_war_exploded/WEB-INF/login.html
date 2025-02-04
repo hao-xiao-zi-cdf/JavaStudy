@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>蛇年欢迎页面</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #ff6347; /* 橙红色背景 */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            background-image: url('https://example.com/fireworks-background.jpg'); /* 烟花背景 */
+            background-size: cover;
+            background-position: center;
+        }
+        .container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 2s ease-in-out;
+        }
+        h1 {
+            color: #ff4500; /* 橙红色文字 */
+            font-size: 3em;
+            animation: slideIn 2s ease-in-out;
+        }
+        img {
+            width: 200px;
+            height: auto;
+            margin-bottom: 20px;
+            transition: transform 0.3s;
+            animation: bounce 2s infinite;
+        }
+        img:hover {
+            transform: scale(1.1);
+        }
+        button {
+            background-color: #ff4500;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            animation: pulse 2s infinite;
+        }
+        button:hover {
+            background-color: #ff6347;
+        }
+        #message {
+            display: none;
+            color: #ffff00; /* 黄色文字 */
+            margin-top: 20px;
+            font-size: 1.5em;
+            animation: fadeIn 2s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-30px); }
+            60% { transform: translateY(-15px); }
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>欢迎来到蛇年</h1>
+        <img src="https://example.com/snake.gif" alt="蛇年动图">
+        <button onclick="showMessage()">点击这里</button>
+        <p id="message">祝您蛇年快乐！</p>
+    </div>
+
+    <script>
+        function showMessage() {
+            document.getElementById('message').style.display = 'block';
+        }
+
+        // 添加烟花效果
+        document.addEventListener('DOMContentLoaded', function() {
+            const canvas = document.createElement('canvas');
+            document.body.appendChild(canvas);
+            const ctx = canvas.getContext('2d');
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+
+            class Firework {
+                constructor(x, y) {
+                    this.x = x;
+                    this.y = y;
+                    this.size = Math.random() * 2 + 1;
+                    this.speed = Math.random() * 2 + 1;
+                    this.color = `hsl(${Math.random() * 360}, 100%, 50%)`;
+                    this.opacity = 1;
+                }
+
+                update() {
+                    this.y -= this.speed;
+                    this.opacity -= 0.01;
+                    if (this.opacity < 0) {
+                        this.opacity = 0;
+                    }
+                }
+
+                draw() {
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                    ctx.fillStyle = `${this.color} ${this.opacity}`;
+                    ctx.fill();
+                }
+            }
+
+            let fireworks = [];
+
+            function createFirework(x, y) {
+                for (let i = 0; i < 100; i++) {
+                    fireworks.push(new Firework(x, y));
+                }
+            }
+
+            function animate() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                fireworks.forEach((firework, index) => {
+                    firework.update();
+                    firework.draw();
+                    if (firework.opacity <= 0) {
+                        fireworks.splice(index, 1);
+                    }
+                });
+                requestAnimationFrame(animate);
+            }
+
+            animate();
+
+            document.addEventListener('click', (e) => {
+                createFirework(e.clientX, e.clientY);
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GET and POST Form Example</title>
+</head>
+<body>
+<h1>GET请求</h1>
+<form action="/ru/get" method="get">
+  <label for="usernameGet">Username:</label>
+  <input type="text" id="usernameGet" name="username"><br><br>
+  <label for="passwordGet">Password:</label>
+  <input type="password" id="passwordGet" name="password"><br><br>
+  <input type="submit" value="Login with GET">
+</form>
+
+<h1>POST请求</h1>
+<form action="/ru/post" method="post">
+  <label for="usernamePost">Username:</label>
+  <input type="text" id="usernamePost" name="username"><br><br>
+  <label for="passwordPost">Password:</label>
+  <input type="password" id="passwordPost" name="password"><br><br>
+  <input type="submit" value="Login with POST">
+</form>
+</body>
+</html>

@@ -282,7 +282,7 @@ public class deptServlet extends HttpServlet {
         out.print("            function del(dno){");
         out.print("            var ok = window.confirm('亲，删了不可恢复哦！');");
         out.print("            if(ok){");
-        out.print("                document.location.href = '/oa/dept/del?deptno=' + dno;");
+        out.print("                document.location.href = '/ao/dept/del?deptno=' + dno;");
         out.print("            }");
         out.print("        }");
         out.print("</script>");
