@@ -231,9 +231,6 @@ public class deptServlet extends HttpServlet {
         PreparedStatement stat = null;
         ResultSet set = null;
 
-        response.setContentType("text/html");
-        PrintWriter out = response.getWriter();
-
         try {
             conn= JDBCUnit.getConnection();
             String sql = "INSERT INTO dept (deptno, deptname, loc) VALUES (?, ?, ?);";
