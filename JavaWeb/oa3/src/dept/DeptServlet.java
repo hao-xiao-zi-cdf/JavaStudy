@@ -6,6 +6,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -27,20 +28,28 @@ public class DeptServlet extends HttpServlet {
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //获取请求路径
-        String path = request.getServletPath();
+        //获取该会话session对象
+        HttpSession session = request.getSession(false);
 
-        //根据路劲不同执行不同的操作
-        if("/dept/list".equals(path)){
-            doList(request,response);
-        }else if ("/dept/add".equals(path)){
-            doAdd(request,response);
-        }else if ("/dept/del".equals(path)){
-            doDel(request,response);
-        }else if ("/dept/detail".equals(path)){
-            doDetail(request,response);
-        }else if ("/dept/change".equals(path)){
-            doChange(request,response);
+        if(session != null && session.getAttribute("username") != null){
+            //获取请求路径
+            String path = request.getServletPath();
+
+            //根据路劲不同执行不同的操作
+            if("/dept/list".equals(path)){
+                doList(request,response);
+            }else if ("/dept/add".equals(path)){
+                doAdd(request,response);
+            }else if ("/dept/del".equals(path)){
+                doDel(request,response);
+            }else if ("/dept/detail".equals(path)){
+                doDetail(request,response);
+            }else if ("/dept/change".equals(path)){
+                doChange(request,response);
+            }
+        }else{
+            //重定向会登录页面
+            response.sendRedirect(request.getContextPath() + "/index.jsp");
         }
     }
 

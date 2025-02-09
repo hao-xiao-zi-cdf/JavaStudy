@@ -17,6 +17,8 @@
 		<title>修改部门</title>
 	</head>
 	<body>
+		<%--从session中获取用户信息--%>
+		<h1><%=session.getAttribute("username")%></h1>
 		<h1>修改部门</h1>
 		<hr >
 		<form action="<%=path%>/dept/change" method="post">

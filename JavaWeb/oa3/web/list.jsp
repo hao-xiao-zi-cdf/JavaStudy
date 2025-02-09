@@ -30,7 +30,10 @@
 		}
 	}
 </script>
-
+		<%--从session中获取用户信息--%>
+		<h1><%=session.getAttribute("username")%></h1>
+		<%--退出登录--%>
+		<a href="<%=path%>/user/exit">安全退出</a>
 		<h1 align="center">部门列表</h1>
 		<hr >
 		<table border="1px" align="center" width="50%">
