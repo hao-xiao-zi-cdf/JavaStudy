@@ -3,10 +3,7 @@ package user;
 import dept.JDBCUnit;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
+import jakarta.servlet.http.*;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -77,6 +74,25 @@ public class UserServlet extends HttpServlet {
         }
 
         if(flag){
+            //判断是否勾选十天免登录复选框
+            if(request.getParameter("f") != null){
+                //将用户数据存入cookie中
+                Cookie cookie1 = new Cookie("username",userId);
+                Cookie cookie2 = new Cookie("password",password);
+
+                //设置cookie关联路径
+                cookie1.setPath(path);
+                cookie2.setPath(path);
+
+                //设置cookie有效时间10天
+                cookie1.setMaxAge(60 * 60 * 24 * 10);
+                cookie2.setMaxAge(60 * 60 * 24 * 10);
+
+                //发送到浏览器
+                response.addCookie(cookie1);
+                response.addCookie(cookie2);
+            }
+
             //进行资源跳转，重定向到列表页面
             //使用session机制将用户信息存入会话域，以便在后续操作中可以快捷的判断是否为本人操作
             HttpSession session = request.getSession();

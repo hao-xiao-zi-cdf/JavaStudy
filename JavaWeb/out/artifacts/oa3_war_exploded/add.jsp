@@ -10,6 +10,8 @@
 		<title>新增部门</title>
 	</head>
 	<body>
+		<%--从session中获取用户信息--%>
+		<h1><%=session.getAttribute("username")%></h1>
 		<h1>新增部门</h1>
 		<hr >
 		<form action="<%=path%>/dept/add" method="post">

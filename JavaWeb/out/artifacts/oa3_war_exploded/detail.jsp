@@ -13,6 +13,8 @@
 		<title>部门详情</title>
 	</head>
 	<body>
+		<%--从session中获取用户信息--%>
+		<h1><%=session.getAttribute("username")%></h1>
 		<h1>部门详情</h1>
 		<hr >
 		部门编号：<%=deptno%> <br>

@@ -1,8 +1,8 @@
 <%@page contentType="text/html;charset=utf-8"%>
 <%@page session="false"%>
 <%
-	//获取应用根目录
-	String path = request.getContextPath();
+    //获取应用根目录
+    String path = request.getContextPath();
 %>
 <!DOCTYPE html>
 <html>
@@ -32,6 +32,9 @@
             border: 1px solid #ccc;
             border-radius: 5px;
         }
+        input[type="checkbox"] {
+            margin: 10px 0;
+        }
         input[type="submit"] {
             padding: 10px 20px;
             background-color: #28a745;
@@ -50,6 +53,9 @@
         <h2>登录页面</h2>
         <input type="text" name="userId" placeholder="用户ID" required>
         <input type="password" name="password" placeholder="密码" required>
+        <br>
+        <input type="checkbox" name="f" value="1"> 十天内免登录
+        <br>
         <input type="submit" value="登录">
     </form>
 </body>
