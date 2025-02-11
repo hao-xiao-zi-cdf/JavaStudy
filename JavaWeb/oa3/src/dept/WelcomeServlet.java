@@ -35,8 +35,7 @@ public class WelcomeServlet extends HttpServlet {
                 String name = cookie.getName();
                 if(name.equals("username")){
                     username = cookie.getValue();
-                }
-                if (name.equals("password")) {
+                }else if (name.equals("password")) {
                     password = cookie.getValue();
                 }
             }
@@ -49,26 +48,35 @@ public class WelcomeServlet extends HttpServlet {
             PreparedStatement stat = null;
             ResultSet set = null;
 
+            boolean flag = false;
+
             try {
                 //获取数据库连接
                 conn = JDBCUnit.getConnection();
-                String sql = "select * from dept where user_id = ? and password = ?;";
+                String sql = "select * from user where username = ? and password = ?;";
                 stat = conn.prepareStatement(sql);
                 stat.setString(1,username);
                 stat.setString(2,password);
                 set = stat.executeQuery();
                 if(set.next()) {
-                    //向session域中绑定数据
-                    HttpSession session = request.getSession();
-                    session.setAttribute("username",username);
-
-                    //重定向到/dept/list
-                    response.sendRedirect(request.getContextPath() + "/dept/list");
+                    flag = true;
                 }
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             } finally {
                 JDBCUnit.close(conn,stat,set);
+            }
+
+            if(flag){
+                //向session域中绑定数据
+                HttpSession session = request.getSession();
+                session.setAttribute("username",username);
+
+                //重定向到/dept/list
+                response.sendRedirect(request.getContextPath() + "/dept/list");
+            }else{
+                //重新回到登录页面
+                response.sendRedirect(request.getContextPath() + "/index.jsp");
             }
         }else{
             //重新回到登录页面

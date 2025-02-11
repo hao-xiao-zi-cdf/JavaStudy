@@ -48,7 +48,7 @@ public class UserServlet extends HttpServlet {
         String path = request.getContextPath();
 
         //获取用户输入value值
-        String userId = request.getParameter("userId");
+        String userId = request.getParameter("username");
         String password = request.getParameter("password");
 
         //准备参数
@@ -59,7 +59,7 @@ public class UserServlet extends HttpServlet {
         //获取连接
         try {
             conn = JDBCUnit.getConnection();
-            String sql = "select * from users where user_id = ? and password = ?";
+            String sql = "select * from user where username = ? and password = ?";
             stat = conn.prepareStatement(sql);
             stat.setString(1,userId);
             stat.setString(2,password);
@@ -74,6 +74,10 @@ public class UserServlet extends HttpServlet {
         }
 
         if(flag){
+            //使用session机制将用户信息存入会话域，以便在后续操作中可以快捷的判断是否为本人操作
+            HttpSession session = request.getSession();
+            session.setAttribute("username",userId);
+
             //判断是否勾选十天免登录复选框
             if(request.getParameter("f") != null){
                 //将用户数据存入cookie中
@@ -94,9 +98,6 @@ public class UserServlet extends HttpServlet {
             }
 
             //进行资源跳转，重定向到列表页面
-            //使用session机制将用户信息存入会话域，以便在后续操作中可以快捷的判断是否为本人操作
-            HttpSession session = request.getSession();
-            session.setAttribute("username",userId);
             response.sendRedirect(path + "/dept/list");
         }else{
             //进行资源跳转，重定向到列表页面

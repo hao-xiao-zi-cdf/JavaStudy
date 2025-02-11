@@ -51,7 +51,7 @@
 <body>
     <form action="<%=path%>/user/login" method="post">
         <h2>登录页面</h2>
-        <input type="text" name="userId" placeholder="用户ID" required>
+        <input type="text" name="username" placeholder="用户ID" required>
         <input type="password" name="password" placeholder="密码" required>
         <br>
         <input type="checkbox" name="f" value="1"> 十天内免登录
