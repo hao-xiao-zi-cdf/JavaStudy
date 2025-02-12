@@ -1,14 +1,15 @@
 <%@ page import="bean.Dept" %>
 <%@ page import="java.util.List" %>
-<%@ page contentType="text/html;charset=utf-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@page contentType="text/html;charset=utf-8"%>
+<%
+	//获取应用根目录
+	String path = request.getContextPath();
+%>
 <!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="utf-8">
 		<title>部门列表页面</title>
-		<%--设置基础路径--%>
-		<base href="${pageContext.request.scheme}://${pageContext.request.serverName}:${pageContext.request.serverPort}${pageContext.request.contextPath}/">
 	</head>
 	<body>
 
@@ -25,14 +26,14 @@
 			//document.location = "请求路径"
 			//window.location.href = "请求路径"
 			//window.location = "请求路径"
-			document.location.href = "${pageContext.request.contextPath}/dept/del?deptno=" + dno;
+			document.location.href = "<%=path%>/dept/del?deptno=" + dno;
 		}
 	}
 </script>
 		<%--从session中获取用户信息--%>
-		<h1>${sessionScope.username}</h1>
+		<h1><%=session.getAttribute("username")%></h1>
 		<%--退出登录--%>
-		<a href="user/exit">安全退出</a>
+		<a href="<%=path%>/user/exit">安全退出</a>
 		<h1 align="center">部门列表</h1>
 		<hr >
 		<table border="1px" align="center" width="50%">
@@ -42,22 +43,34 @@
 				<th>部门名称</th>
 				<th>操作</th>
 			</tr>
-			<c:forEach items="${requestScope.list}" var="s" varStatus="i">
-				<tr>
-					<td>${i.count}</td>
-					<td>${s.deptno}</td>
-					<td>${s.deptname}</td>
-					<td>
-						<a href="javascript:void(0)" onclick="del(${s.deptno})" >删除</a>
-						<a href="dept/detail?f=e&deptno=${s.deptno}">修改</a>
-						<a href="dept/detail?f=d&deptno=${s.deptno}">详情</a>
-					</td>
-				</tr>
-			</c:forEach>
+			<%
+				List<Dept> list = (List<Dept>) request.getAttribute("list");
+
+				int i = 0;
+				//遍历集合，获取数据
+				for(Dept dept:list){
+					String deptno = dept.getDeptno();
+					String deptname = dept.getDeptname();
+					String loc = dept.getLoc();
+			%>
+			<tr>
+				<td><%=(++i)%></td>
+				<td><%=deptno%></td>
+				<td><%=deptname%></td>
+				<td>
+					<a href="javascript:void(0)" onclick="del(<%=deptno%>)" >删除</a>
+					<a href="<%=path%>/dept/detail?f=e&deptno=<%=deptno%>">修改</a>
+					<a href="<%=path%>/dept/detail?f=d&deptno=<%=deptno%>">详情</a>
+				</td>
+			</tr>
+			<%
+				}
+			%>
+
 		</table>
 		
 		<hr >
-		<a href="add.jsp">新增部门</a>
+		<a href="<%=path%>/add.jsp">新增部门</a>
 		
 	</body>
 </html>

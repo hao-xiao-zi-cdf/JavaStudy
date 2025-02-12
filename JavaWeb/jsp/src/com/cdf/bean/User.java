@@ -1,5 +1,7 @@
 package com.cdf.bean;
 
+import java.util.Objects;
+
 /**
  * Created with IntelliJ IDEA.
  * Description:
@@ -66,5 +68,19 @@ public class User {
                 ", password='" + password + '\'' +
                 ", age=" + age +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        System.out.println("调用了equals方法");
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return age == user.age && Objects.equals(userName, user.userName) && Objects.equals(password, user.password);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(userName, password, age);
     }
 }

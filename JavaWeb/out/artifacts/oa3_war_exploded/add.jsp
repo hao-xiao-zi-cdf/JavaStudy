@@ -1,8 +1,4 @@
 <%@page contentType="text/html;charset=utf-8"%>
-<%
-	//获取应用根目录
-	String path = request.getContextPath();
-%>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -11,10 +7,10 @@
 	</head>
 	<body>
 		<%--从session中获取用户信息--%>
-		<h1><%=session.getAttribute("username")%></h1>
+		<h1>${sessionScope.username}</h1>
 		<h1>新增部门</h1>
 		<hr >
-		<form action="<%=path%>/dept/add" method="post">
+		<form action="${pageContext.request.contextPath}/dept/add" method="post">
 			部门编号<input type="text" name="deptno"/><br>
 			部门名称<input type="text" name="deptname"/><br>
 			部门位置<input type="text" name="loc"/><br>

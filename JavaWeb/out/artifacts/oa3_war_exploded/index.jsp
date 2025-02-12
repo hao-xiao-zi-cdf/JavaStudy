@@ -1,9 +1,5 @@
 <%@page contentType="text/html;charset=utf-8"%>
 <%@page session="false"%>
-<%
-    //获取应用根目录
-    String path = request.getContextPath();
-%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -49,7 +45,7 @@
     </style>
 </head>
 <body>
-    <form action="<%=path%>/user/login" method="post">
+    <form action="${pageContext.request.contextPath}/user/login" method="post">
         <h2>登录页面</h2>
         <input type="text" name="username" placeholder="用户ID" required>
         <input type="password" name="password" placeholder="密码" required>

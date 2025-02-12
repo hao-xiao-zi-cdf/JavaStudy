@@ -21,8 +21,7 @@ import java.sql.SQLException;
 @WebServlet(value = "/welcome")
 public class WelcomeServlet extends HttpServlet {
     @Override
-    protected void service(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //获取cookie数据
         Cookie[] cookies = request.getCookies();
 
