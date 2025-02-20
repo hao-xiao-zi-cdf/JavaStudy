@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.hao_xiao_zi</groupId>
+    <artifactId>maven_test</artifactId>
+    <version>1.0.0</version>
+
+    <properties>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+<!--    上传到私服Nexus,maven会根据版本信息决定上传到发行版本还是内测版本-->
+    <distributionManagement>
+<!--        上传到企业开发发行版本-->
+        <repository>
+            <id>hxz_nexus</id>
+            <url>http://127.0.0.1:8081/repository/hxz_release/</url>
+        </repository>
+
+<!--        上传到企业开发内测版本-->
+        <snapshotRepository>
+            <id>hxz_nexus</id>
+            <url>http://127.0.0.1:8081/repository/hxz_snapshot/</url>
+        </snapshotRepository>
+    </distributionManagement>
+
+</project>
