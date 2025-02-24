@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace先随意写一个-->
+<mapper namespace="car">
+    <!--insert sql：保存一个汽车信息-->
+    <!--id为编写的sql语句编号-->
+    <insert id="insertCar">
+        insert into t_car
+            (id,car_num,brand,guide_price,produce_time,car_type)
+        values
+            (null,#{car_num},#{brand},#{guide_price},#{produce_time},#{car_type});
+    </insert>
+    <insert id="insertCar1">
+        insert into t_car
+            (id,car_num,brand,guide_price,produce_time,car_type)
+        values
+            (null,#{car_num},#{brand},#{guide_price},#{produce_time},#{car_type});
+    </insert>
+    <delete id="deleteCar">
+        DELETE FROM t_car
+        WHERE id = #{id};
+    </delete>
+    <update id="updateCar">
+        UPDATE t_car
+        SET car_num = #{car_num}, brand = #{brand}, guide_price = #{guide_price}, produce_time = #{produce_time}, car_type = #{car_type}
+        WHERE id = #{id};
+    </update>
+
+    <select id="selectOne" resultType="com.hao_xiao_zi.pojo.Car">
+        select * from t_car where id = #{id};
+    </select>
+
+    <select id="selectAll" resultType="com.hao_xiao_zi.pojo.Car">
+        select * from t_car;
+    </select>
+</mapper>
