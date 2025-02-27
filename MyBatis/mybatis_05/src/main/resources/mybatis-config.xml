@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <settings>
+        <setting name="logImpl" value="STDOUT_LOGGING"/>
+    </settings>
+<!--    对resultType指定的全限定类名起别名-->
+<!--    type：全限定类名-->
+<!--    alias：别名-->
+<!--    <typeAliases>-->
+<!--        <typeAlias type="com.hao_xiao_zi.mybatis.pojo.Car"></typeAlias>-->
+<!--    </typeAliases>-->
+    <typeAliases>
+        <package name="com.hao_xiao_zi.mybatis.pojo"/>
+    </typeAliases>
+
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://localhost:3306/test"/>
+                <property name="username" value="root"/>
+                <property name="password" value="root"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <mappers>
+        <!--sql映射文件创建好之后，需要将该文件路径配置到这里-->
+<!--        <mapper resource="CarMapping.xml"/>-->
+<!--        <mapper resource="LogMapping.xml"/>-->
+<!--        class指向一个mapper接口，必须是全限定接口名称-->
+<!--        <mapper class="com.hao_xiao_zi.mybatis.mapper.CarMapping"></mapper>-->
+<!--        <mapper class="com.hao_xiao_zi.mybatis.mapper.LogMapping"></mapper>-->
+<!--        所有的sql映射文件mybatis会去com.hao_xiao_zi.mybatis.mapper路径下查找对应的下xml文件-->
+<!--        但必须保证xml文件和接口名一样，且在同一级目录下面-->
+        <package name="com.hao_xiao_zi.mybatis.mapper"/>
+    </mappers>
+</configuration>

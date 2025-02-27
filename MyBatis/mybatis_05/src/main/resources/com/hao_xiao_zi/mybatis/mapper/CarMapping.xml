@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hao_xiao_zi.mybatis.mapper.CarMapping">
+    <select id="selectCarByCarType" resultType="com.hao_xiao_zi.mybatis.pojo.Car">
+        select * from t_car where car_type = #{carType};
+    </select>
+
+    <select id="selectCarByDescOrAsc" resultType="car">
+        SELECT *
+        FROM t_car
+        ORDER BY guide_price ${asc};
+    </select>
+
+<!--    <select id="selectCarByDim" resultType="com.hao_xiao_zi.mybatis.pojo.Car">-->
+<!--        SELECT * FROM t_car WHERE brand LIKE '%${dim}%';-->
+<!--    </select>-->
+<!--    <select id="selectCarByDim" resultType="com.hao_xiao_zi.mybatis.pojo.Car">-->
+<!--        SELECT * FROM t_car WHERE brand LIKE concat('%',#{dim},'%');-->
+<!--    </select>-->
+    <select id="selectCarByDim" resultType="car">
+        SELECT * FROM t_car WHERE brand LIKE "%"#{dim}"%";
+    </select>
+</mapper>
