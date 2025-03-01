@@ -22,4 +22,99 @@
             and car_type = #{carType}
         </if>
     </select>
+
+    <select id="selectCarWithWhere" resultType="car">
+        select * from t_car
+        <where>
+            <if test="brand != null and brand != ''">
+                brand like "%"#{brand}"%"
+            </if>
+            <if test="price != null and price != ''">
+                and guide_price > #{price}
+            </if>
+            <if test="carType != null and carType != ''">
+                and car_type = #{carType}
+            </if>
+        </where>
+    </select>
+
+    <select id="selectCarWithTrim" resultType="car">
+        select * from t_car
+        <trim prefix="where" prefixOverrides="and|or" suffixOverrides="and|or">
+            <if test="brand != null and brand != ''">
+                brand like "%"#{brand}"%" and
+            </if>
+            <if test="price != null and price != ''">
+                guide_price > #{price} and
+            </if>
+            <if test="carType != null and carType != ''">
+                car_type = #{carType} and
+            </if>
+        </trim>
+    </select>
+
+    <update id="updateCarWithSet">
+        update t_car
+        <set>
+            <if test="car_num != null and car_num != ''">
+                car_num = #{car_num},
+            </if>
+            <if test="brand != null and brand != ''">
+                brand = #{brand},
+            </if>
+            <if test="guide_price != null and guide_price != ''">
+                guide_price = #{guide_price},
+            </if>
+            <if test="produce_time != null and produce_time != ''">
+                produce_time = #{produce_time}
+            </if>
+            <if test="car_type != null and car_type != ''">
+                car_type = #{car_type}
+            </if>
+        </set>
+        where id = #{id};
+    </update>
+<!--    使用choose标签，则多个when标签只会有一个被选中,前面的标签为true，后面的标签不会被执行-->
+    <select id="selectCarWithChooseWhenOtherwise" resultType="car">
+        select * from t_car
+        <where>
+            <choose>
+                <when test="brand != null and brand != ''">brand like "%"#{brand}"%"</when>
+                <when test="price != null and price != ''">guide_price > #{price}</when>
+                <when test="carType != null and carType != ''">car_type = #{carType}</when>
+            </choose>
+        </where>
+    </select>
+<!--    <delete id="deleteCarWithForEach">-->
+<!--        DELETE FROM t_car-->
+<!--        WHERE id in(-->
+<!--        <foreach collection="ids" item="temp" separator=",">-->
+<!--            #{temp}-->
+<!--        </foreach>-->
+<!--        )-->
+<!--    </delete>-->
+
+    <delete id="deleteCarWithForEach">
+            DELETE FROM t_car
+            WHERE id in
+            <foreach collection="ids" item="temp" separator="," open="(" close=")">
+                #{temp}
+            </foreach>
+    </delete>
+
+    <delete id="deleteCarWithForEach1">
+        DELETE FROM t_car
+        WHERE
+        <foreach collection="ids" item="temp" separator="or">
+            id = #{temp}
+        </foreach>
+    </delete>
+
+    <insert id="insertCarWithForEach">
+        INSERT INTO t_car
+        VALUES
+        <foreach collection="cars" item="car" separator=",">
+            (null,#{car.car_num},#{car.brand},#{car.guide_price},#{car.produce_time},#{car.car_type})
+        </foreach>
+    </insert>
 </mapper>
