@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hao_xiao_zi.mybatis.mapper.StudentMapping">
+
+    <resultMap id="StudentResultMap" type="Student">
+        <id property="sid" column="sid"/>
+        <result property="sname" column="sname"/>
+        <result property="clazz.cid" column="cid"/>
+        <result property="clazz.cname" column="cname"/>
+    </resultMap>
+
+    <resultMap id="StudentResultMap1" type="Student">
+        <id property="sid" column="sid"/>
+        <result property="sname" column="sname"/>
+        <association property="clazz" javaType="Clazz">
+            <id property="cid" column="cid"/>
+            <result property="cname" column="cname"/>
+        </association>
+    </resultMap>
+
+<!--    对该条sq语句开启延迟加载模式，需要用到该查询语句时才使用，否则不使用-->
+    <resultMap id="StudentResultMapByStep1" type="Student">
+        <id property="sid" column="sid"/>
+        <result property="sname" column="sname"/>
+        <association property="clazz"
+                     select="com.hao_xiao_zi.mybatis.mapper.ClazzMapping.selectClazzById"
+                     column="cid"
+                     fetchType="eager"
+        />
+    </resultMap>
+
+    <select id="selectStuInfoById" resultMap="StudentResultMap">
+        SELECT s.sid,s.sname,c.cid,c.cname
+        FROM t_stu s
+        LEFT JOIN t_clazz c
+        ON s.cid = c.cid
+        where s.sid = #{sid};
+    </select>
+
+    <select id="selectStuInfoById1" resultMap="StudentResultMap1">
+        SELECT s.sid,s.sname,c.cid,c.cname
+        FROM t_stu s
+        LEFT JOIN t_clazz c
+        ON s.cid = c.cid
+        where s.sid = #{sid};
+    </select>
+
+    <select id="selectStuByStep1" resultMap="StudentResultMapByStep1">
+        select * from t_stu where sid = #{sid};
+    </select>
+
+    <select id="selectStuByStep2" resultType="student">
+        select * from t_stu s where s.cid = #{cid};
+    </select>
+</mapper>
