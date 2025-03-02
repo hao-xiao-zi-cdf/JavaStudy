@@ -2,6 +2,7 @@ package com.hao_xiao_zi.mybatis.test;
 
 import com.hao_xiao_zi.mybatis.mapper.ClazzMapping;
 import com.hao_xiao_zi.mybatis.mapper.StudentMapping;
+import com.hao_xiao_zi.mybatis.pojo.Clazz;
 import com.hao_xiao_zi.mybatis.pojo.Student;
 import com.hao_xiao_zi.mybatis.utils.SqlSessionUtils;
 import org.apache.ibatis.session.SqlSession;
@@ -21,10 +22,18 @@ public class ClazzMappingTest {
     public void testSelectStudents(){
         SqlSession sqlSession = SqlSessionUtils.getSqlSession();
         ClazzMapping mapper = sqlSession.getMapper(ClazzMapping.class);
-        List<Student> students = mapper.selectSameClazzStudentsById(1000);
-        for(Student stu : students){
-            System.out.println(stu);
-        }
+        Clazz clazz = mapper.selectSameClazzStudentsByName("高三一班");
+        System.out.println(clazz);
+        sqlSession.commit();
+        sqlSession.close();
+    }
+
+    @Test
+    public void testSelectSameClazzStus(){
+        SqlSession sqlSession = SqlSessionUtils.getSqlSession();
+        ClazzMapping mapper = sqlSession.getMapper(ClazzMapping.class);
+        Clazz clazz = mapper.selectSameClazzStudentsByNameAndStep1("高三一班");
+        System.out.println(clazz);
         sqlSession.commit();
         sqlSession.close();
     }

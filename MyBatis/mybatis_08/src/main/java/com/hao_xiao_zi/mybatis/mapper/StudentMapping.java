@@ -2,6 +2,8 @@ package com.hao_xiao_zi.mybatis.mapper;
 
 import com.hao_xiao_zi.mybatis.pojo.Student;
 
+import java.util.List;
+
 /**
  * Created with IntelliJ IDEA.
  * Description:
@@ -26,4 +28,6 @@ public interface StudentMapping {
      * @return
      */
     Student selectStuByStep1(Integer id);
+
+    List<Student> selectStuByStep2(Integer id);
 }

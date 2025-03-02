@@ -14,16 +14,6 @@ public class Clazz {
     private String cname;
     private List<Student> students;
 
-    public List<Student> getStudents() {
-        return students;
-    }
-
-    public void setStudents(List<Student> students) {
-        this.students = students;
-    }
-
-
-
     public Integer getCid() {
         return cid;
     }
@@ -38,6 +28,14 @@ public class Clazz {
 
     public void setCname(String cname) {
         this.cname = cname;
+    }
+
+    public List<Student> getStudents() {
+        return students;
+    }
+
+    public void setStudents(List<Student> students) {
+        this.students = students;
     }
 
     public Clazz(Integer cid, String cname) {

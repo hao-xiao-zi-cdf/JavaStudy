@@ -20,5 +20,12 @@ public interface ClazzMapping {
      */
     Clazz selectClazzById(Integer id);
 
-    List<Student> selectSameClazzStudentsById(Integer id);
+    Clazz selectSameClazzStudentsByName(String cname);
+
+    /**
+     * 使用分部查询找出相同班级的学生信息1.根据班级名称查找出班级编号 2.根据班级编号查找所在班级学生信息
+     * @param cname
+     * @return
+     */
+    Clazz selectSameClazzStudentsByNameAndStep1(String cname);
 }

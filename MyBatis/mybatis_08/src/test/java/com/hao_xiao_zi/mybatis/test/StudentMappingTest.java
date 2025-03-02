@@ -28,8 +28,10 @@ public class StudentMappingTest {
     public void testSelectStuInfoById1(){
         SqlSession sqlSession = SqlSessionUtils.getSqlSession();
         StudentMapping mapper = sqlSession.getMapper(StudentMapping.class);
-        Student stu = mapper.selectStuInfoById1(1);
-        System.out.println(stu);
+        Student stu = mapper.selectStuByStep1(1);
+        System.out.println(stu.getSname());
+
+//        System.out.println(stu);
         sqlSession.commit();
         sqlSession.close();
     }
