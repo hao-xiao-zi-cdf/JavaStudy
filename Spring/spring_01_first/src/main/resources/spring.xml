@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+<!--    在bean标签中指定需要管理的bean,需要指定管理这个bean在容器当中id,并指定其关联的class类，需要填写全限定类名-->
+    <bean id="userBean" class="com.hao_xiao_zi.spring.bean.User"/>
+    <bean id="studentBean" class="com.hao_xiao_zi.spring.bean.Student"/>
+    <bean id="dateBean" class="java.util.Date"/>
+</beans>
