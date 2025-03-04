@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="nameBean" class="com.hao_xiao_zi.spring.dao.Name">
+        <property name="name" value="张三"/>
+    </bean>
+    <bean id="nameBean1" class="com.hao_xiao_zi.spring.dao.Name">
+        <property name="name" value="李四"/>
+    </bean>
+
+    <bean id="nameBean2" class="com.hao_xiao_zi.spring.dao.Name">
+        <property name="name" value="王五"/>
+    </bean>
+
+    <bean id="nameBean3" class="com.hao_xiao_zi.spring.dao.Name">
+        <property name="name" value="张三"/>
+    </bean>
+
+    <bean id="arrayBean" class="com.hao_xiao_zi.spring.dao.Array">
+        <property name="str">
+            <array>
+                <value>鸡排</value>
+                <value>汉堡</value>
+                <value>炸鸡</value>
+            </array>
+        </property>
+
+        <property name="names">
+            <array>
+                <ref bean="nameBean"/>
+                <ref bean="nameBean1"/>
+            </array>
+        </property>
+        <property name="list1">
+            <list>
+                <value>111</value>
+                <value>222</value>
+                <value>333</value>
+            </list>
+        </property>
+        <property name="list2">
+            <list>
+                <ref bean="nameBean1"/>
+                <ref bean="nameBean"/>
+                <ref bean="nameBean2"/>
+                <ref bean="nameBean3"/>
+            </list>
+        </property>
+        <property name="set1">
+            <set>
+                <value>hello</value>
+                <value>word</value>
+                <value>hello</value>
+            </set>
+        </property>
+        <property name="set2">
+            <set>
+                <ref bean="nameBean"/>
+                <ref bean="nameBean3"/>
+            </set>
+        </property>
+        <property name="map1">
+            <map>
+                <entry key="1" value="张三"/>
+                <entry key="2" value="李四"/>
+            </map>
+        </property>
+        <property name="map2">
+            <map>
+                <entry key="1" value-ref="nameBean"/>
+                <entry key="2" value-ref="nameBean3"/>
+            </map>
+        </property>
+    </bean>
+</beans>

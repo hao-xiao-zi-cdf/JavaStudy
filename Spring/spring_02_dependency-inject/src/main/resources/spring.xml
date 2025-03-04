@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+<!--    外部声明，定义bean对象-->
+    <bean id="userBean" class="com.hao_xiao_zi.spring.dao.UserImpl"/>
+<!--    把bean对象定义在外面，在property标签中通过ref属性对该bean对象进行注入-->
+    <bean id="userServiceBean" class="com.hao_xiao_zi.spring.service.UserServiceImpl">
+        <property name="userDao" ref="userBean"/>
+    </bean>
+
+    <bean id="studentServiceBean" class="com.hao_xiao_zi.spring.service.StudentServiceImpl">
+        <property name="studentDao">
+            <bean id="studentBean" class="com.hao_xiao_zi.spring.dao.StudentImpl"/>
+        </property>
+    </bean>
+</beans>

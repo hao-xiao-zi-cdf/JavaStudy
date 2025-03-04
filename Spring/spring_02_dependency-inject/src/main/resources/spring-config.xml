@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+<!--    这里只是把bean对象创建出来，但是还没有构建bean对象之间的关系-->
+    <bean id="userBean" class="com.hao_xiao_zi.spring.dao.UserImpl"/>
+    <bean id="studentBean" class="com.hao_xiao_zi.spring.dao.StudentImpl"/>
+<!--    通过注入的手段维护依赖之间的关系，这里使用的是set注入-->
+    <bean id="userServiceBean" class="com.hao_xiao_zi.spring.service.UserServiceImpl">
+<!--        这里的property用来指定要注入的属性，底层会调用setXxx方法进行注入，ref指定注入的bean对象-->
+        <property name="userDao" ref="userBean"/>
+    </bean>
+    <bean id="studentServiceBean" class="com.hao_xiao_zi.spring.service.StudentServiceImpl">
+<!--        index指定为构造方法第几个参数赋值，ref指定使用哪个bean对象进行赋值-->
+<!--        <constructor-arg index="0" ref="studentBean"/>-->
+<!--        name指定为参数名为userDao的参数赋值，ref指定使用哪个bean对象进行赋值-->
+        <constructor-arg name="userDao" ref="studentBean"/>
+    </bean>
+</beans>

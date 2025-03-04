@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="nullBean" class="com.hao_xiao_zi.spring.dao.Stu">
+<!--        <property name="name" value=""/>-->
+<!--        <property name="name" value="null"/>-->
+    </bean>
+
+    <bean id="nullBean1" class="com.hao_xiao_zi.spring.dao.Stu">
+        <property name="name">
+            <value><![CDATA[2 < 3]]></value>
+        </property>
+    </bean>
+</beans>
