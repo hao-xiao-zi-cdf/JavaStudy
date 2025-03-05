@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+<!--   这种方式来设置狗狗的生日确实可以，但是需要特地使用这种格式来进行设置，麻烦，能不能使用yyyy-mm-dd的格式
+       来进行设置?-->
+<!--    <bean id="dogBean" class="com.hao_xiao_zi.spring.Bean.Dog">-->
+<!--       <property name="birth" value="Mon Oct 10 14:30:26 CST 2022"/>-->
+<!--   </bean>-->
+
+<!--    <bean id="dateBean" class="java.util.Date"/>-->
+<!--    <bean id="dogBean" class="com.hao_xiao_zi.spring.Bean.Dog">-->
+<!--        <property name="birth" ref="dateBean"/>-->
+<!--    </bean>-->
+
+    <bean id="date" class="com.hao_xiao_zi.spring.Bean.DateFactory">
+        <constructor-arg index="0" value="2025-10-10"/>
+    </bean>
+
+    <bean id="dogBean" class="com.hao_xiao_zi.spring.Bean.Dog">
+        <property name="birth" ref="date"/>
+    </bean>
+</beans>

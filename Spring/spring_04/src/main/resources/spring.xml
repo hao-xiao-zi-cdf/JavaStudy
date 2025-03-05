@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+<!--    指定哪个工厂对象的哪个方法获取bean对象-->
+<!--    因为get方法是静态方法，不需要先创建factoryBean-->
+    <bean id="userBean" class="com.hao_xiao_zi.spring.Bean.UserFactory" factory-method="get"/>
+
+<!--    2.通过工厂方法模式获取bean对象，由于获取bean对象为实例方法-->
+<!--    需要先获取工厂类的bean对象-->
+    <bean id="teacherFactoryBean" class="com.hao_xiao_zi.spring.Bean.TeacherFactory"/>
+<!--    获取bean对象，指定从哪个工厂bean对象的哪个方法获取bean对象-->
+    <bean id="teacherBean" factory-bean="teacherFactoryBean" factory-method="get"/>
+
+<!--    3.通过实现FactoryBean接口来获取bean对象-->
+    <bean id="studentBean" class="com.hao_xiao_zi.spring.Bean.StudentFactory"/>
+</beans>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+<!--    初始化和销毁bean对象需要在这指定方法名-->
+
+<!--    bean处理器是针对当前spring容器中的所有bean对象，只要进行了配置，则所有bean对象创建都会调用bean处理器的before,after方法-->
+    <bean id="beanPostProcessor" class="com.hao_xiao_zi.spring.LogBeanPostProcessor"/>
+
+    <bean id="userBean" class="com.hao_xiao_zi.spring.User" init-method="initBean" destroy-method="destroyBean">
+        <property name="name" value="张三"/>
+    </bean>
+</beans>

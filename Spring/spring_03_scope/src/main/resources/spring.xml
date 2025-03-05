@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+<!--    scope目前有两个值：singleton,prototype-->
+<!--    singleton:单例，每个bean对象只能有一个，默认情况下为单例模式-->
+<!--    prototype:原型/多例，每个bean对象可以创建多个-->
+<!--    scope总共有八个值：session,request...session,request要求项目为web项目才能使用-->
+    <bean id="sb" class="com.hao_xiao_zi.spring.bean.SpringBean" scope="prototype"/>
+</beans>
