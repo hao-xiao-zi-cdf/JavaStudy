@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="husBandBean" class="com.hao_xiao_zi.spring.bean2.Husband" scope="singleton">
+        <constructor-arg index="0" value="张三"/>
+        <constructor-arg index="1" ref="wifeBean"/>
+    </bean>
+
+    <bean id="wifeBean" class="com.hao_xiao_zi.spring.bean2.Wife" scope="singleton">
+        <constructor-arg index="0" value="李四"/>
+        <constructor-arg index="1" ref="husBandBean"/>
+    </bean>
+
+<!--    singleton+构造方法注入，所以bean对象的创建基于构造方法
+        Spring容器解析配置文件，但是由于没有wifeBean对象去创建该对象，无法通过构造方法实例化husBandBean对象
+        又由于singleton曝光需要在对象实例化后，所以在去创建wifeBean对象时，在构造对象时没有husBandBean对象，始终无法完成创建-->
+</beans>
