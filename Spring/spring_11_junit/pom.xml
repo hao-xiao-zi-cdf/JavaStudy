@@ -7,7 +7,6 @@
     <groupId>com.hao_xiao_zi.spring</groupId>
     <artifactId>spring_11_junit</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <packaging>jar</packaging>
 
     <!--仓库-->
     <repositories>
