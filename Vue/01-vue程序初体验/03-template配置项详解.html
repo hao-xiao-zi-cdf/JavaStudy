@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 安装vue -->
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <!-- 挂载位置 -->
+    <div id="app">
+        <h1>{{msg}}</h1>
+    </div>
+<!-- 1.模板语句里面只会有一个根标签 -->
+<!-- 2.只要data里面的数据一改变，vue就会对模板语句进行重新编译，重新渲染页面 -->
+<!-- 3.只要使用template配置选项，挂载位置的元素就会被替换成模板语句内容 -->
+<!-- 4.可以不使用template直接在html标签中编写模板语句,但是只能在挂载位置编写才能被
+       vue识别，其他地方只会被浏览器识别为普通字符串  -->
+<!-- 5.在挂载位置编写模板语句，挂载位置内容不会被替换 -->
+<!-- 6.可以不写vue实例的.$mount进行挂载，可以另外使用el配置项来指定vue实例接管的容器
+       接管的容器就会被vue实例识别，并对模板语句进行编译，渲染 -->
+    <script>
+        new Vue({
+            // template : '<h1>{{msg}}</h1>',
+            data : {
+                msg : 'Hello Vue'
+            },
+            el : '#app'
+        })
+        // }).$mount('#app')
+    </script>
+</body>
+</html>
