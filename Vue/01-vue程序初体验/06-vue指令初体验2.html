@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <style>
+        .box {
+            color:black
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <!-- v-show只是简单的去操作css样式来控制元素的显示隐藏，元素还是存在 -->
+        <div v-show="flag" class="box">我是一个v-show指令</div>
+        <!-- v-if底层会根据表达式值，条件创建该元素 -->
+        <div v-if="flag" class="box">我是一个v-if指令</div>
+    </div>
+
+    <script>
+        const vm = new Vue({
+            el : '#app',
+            data : {
+                flag : false
+            }
+        })
+    </script>
+</body>
+</html>
