@@ -9,5 +9,12 @@
   <a th:href="@{/order/detail}">订单详情</a>  <br>
   <a th:href="@{/testValue1}">testValue1</a>  <br>
   <a th:href="@{/testValue2}">testValue2</a>  <br>
+  <form th:action="@{/method}" method="get">
+      用户名：<input type="text" name="username"/><br>
+      密码：<input type="text" name="password"/><br>
+      <input type="submit" value="登录">
+  </form>
+  <a th:href="@{/login?username=zhansan&password=1234}">RequestMapping注解中的params属性</a>  <br>
+  <a th:href="@{/headers}">RequestMapping注解中的headers属性</a>  <br>
 </body>
 </html>

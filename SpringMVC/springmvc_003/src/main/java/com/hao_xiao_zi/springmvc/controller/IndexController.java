@@ -2,7 +2,9 @@ package com.hao_xiao_zi.springmvc.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  * Created with IntelliJ IDEA.
@@ -38,6 +40,28 @@ public class IndexController {
     public String testRESTFul(@PathVariable("username") String username,
                               @PathVariable("password") String password){
         System.out.println("用户名：" + username + "密码：" + password);
+        return "ok";
+    }
+
+    //对前端发送的请求进行约束，只有请求路径为/method，且请求方式为POST方法才能进行提交
+    //不满足该条件的请求路径映射不到该方法
+    @RequestMapping(value = "/method")
+//    @PostMapping("method")
+    public String RequestMethod(){
+        //业务处理
+        System.out.println("login succeed");
+        return "ok";
+    }
+
+//    params属性用来规定字符串参数中可以出现什么参数，以及参数的值等
+    @RequestMapping(value = "/login",params = {"username!=u","password"})
+    public String testParam(){
+        return "ok";
+    }
+
+//    headers属性规定了前端发送的请求协议中，请求头内容参数要有什么，参数值等于什么
+    @RequestMapping(value = "/headers",headers = {"Host","Referer!=http://localhost:8080/springmvc/"})
+    public String testHeaders(){
         return "ok";
     }
 }
