@@ -2,6 +2,7 @@ package com.hao_xiao_zi.springmvc.controller;
 
 import com.hao_xiao_zi.springmvc.pojo.User;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -79,7 +80,7 @@ public class DataController {
     }
 
     //@RequestHeaders注解用来将请求协议中的请求头中的请求头参数与形参进行映射
-    @RequestMapping("/user/reg")
+    @RequestMapping("/user/reg4")
     public String getRequestHeaders(
             @RequestHeader(value = "Host",required = false,defaultValue = "")
             String host,
@@ -87,6 +88,29 @@ public class DataController {
             String referer){
         System.out.println(host);
         System.out.println(referer);
+        return "ok";
+    }
+
+//    CookieValue注解的作用：将客户端发送过来的请求协议中的cookie数据与控制器方法形参进行映射
+    @RequestMapping("/testCookie")
+    public String getCookieValue(
+            @CookieValue(value = "id",required = false,defaultValue = "")
+            Integer id,
+            @CookieValue(value = "expires",required = true,defaultValue = "eee")
+            String data){
+        System.out.println(id);
+        System.out.println(data);
+        return "ok";
+    }
+
+    @RequestMapping("/cookie")
+    public String sendCookie(){
+        return "cookie";
+    }
+
+    @RequestMapping("/user/reg")
+    public String userRegister(User user){
+        System.out.println(user);
         return "ok";
     }
 }
