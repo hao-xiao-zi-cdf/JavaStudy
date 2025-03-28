@@ -1,0 +1,11 @@
+spring:
+  # 配置数据源信息
+  datasource:
+    # 配置数据源类型
+    type: com.zaxxer.hikari.HikariDataSource
+    #配置mysql驱动类 跟驱动类版本有关
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    # 配置url 跟MySQL版本有关
+    url: jdbc:mysql://localhost:3306/mybatis_plus?serverTimezone=GMT%2B8&characterEncoding=utf-8&useSSL=false
+    username: root
+    password: root
