@@ -16,3 +16,10 @@ logging:
 mybatis-plus:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  # mybatis-plus全局配置
+  global-config:
+    db-config:
+      # mybatis-plus在分析根据mapper传递的泛型参数User时，会在分析出的表明user前缀加上t_
+      table-prefix: t_
+      # 全局统一配置主键的生成策略为自动递增
+      id-type: auto
