@@ -23,3 +23,5 @@ mybatis-plus:
       table-prefix: t_
       # 全局统一配置主键的生成策略为自动递增
       id-type: auto
+  # 扫描以下包中的类使用类型别名
+  type-aliases-package: com.hao_xiao_zi.mybatisplus.pojo
