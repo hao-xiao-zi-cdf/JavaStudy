@@ -16,4 +16,41 @@
     <select id="selectPageByAge" resultType="User">
         select uid,user_name,age,email from t_user where age >= #{age}
     </select>
+    <insert id="insertBatch">
+        insert into t_user(,user_name,age,
+        email,is_delete,sex)
+        values
+        <foreach collection="userCollection" item="item" separator=",">
+            (#{item.uid,jdbcType=NUMERIC},#{item.userName,jdbcType=VARCHAR},#{item.age,jdbcType=NUMERIC},
+            #{item.email,jdbcType=VARCHAR},#{item.isDelete,jdbcType=NUMERIC},#{item.sex,jdbcType=NUMERIC})
+        </foreach>
+    </insert>
+    <delete id="deleteByUid">
+        delete
+        from t_user
+        where
+            = #{uid,jdbcType=NUMERIC}
+    </delete>
+    <update id="updateSelective">
+        update t_user
+        <set>
+            <if test="userName != null">user_name=#{userName,jdbcType=VARCHAR},</if>
+            <if test="age != null">age=#{age,jdbcType=NUMERIC},</if>
+            <if test="email != null">email=#{email,jdbcType=VARCHAR},</if>
+            <if test="isDelete != null">is_delete=#{isDelete,jdbcType=NUMERIC},</if>
+            <if test="sex != null">sex=#{sex,jdbcType=NUMERIC},</if>
+        </set>
+        where uid = #{uid,jdbcType=NUMERIC}
+    </update>
+    <select id="selectAge" resultMap="BaseResultMap">
+        select age
+        from t_user
+    </select>
+    <select id="selectAllByUserName" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from t_user
+        where
+        user_name = #{userName,jdbcType=VARCHAR}
+    </select>
 </mapper>

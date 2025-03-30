@@ -1,6 +1,7 @@
 package com.hao_xiao_zi.mybatisplus.pojo;
 
 import com.baomidou.mybatisplus.annotation.*;
+import com.hao_xiao_zi.mybatisplus.enums.SexEnum;
 import lombok.Data;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
@@ -29,6 +30,7 @@ public class User {
     private String name;
     private Integer age;
     private String email;
+    private SexEnum sex;
 
     @TableLogic
     private Integer isDelete;
