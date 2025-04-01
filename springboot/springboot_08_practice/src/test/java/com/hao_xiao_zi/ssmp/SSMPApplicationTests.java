@@ -8,6 +8,7 @@ class SSMPApplicationTests {
 
     @Test
     void contextLoads() {
+
     }
 
 }
