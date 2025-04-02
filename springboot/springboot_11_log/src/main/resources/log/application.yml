@@ -1,0 +1,12 @@
+#debug: true
+logging:
+  #  ????
+  group:
+    ebook: com.hao_xiao_zi.springboot.controller
+
+  level:
+    root: info
+#    com.hao_xiao_zi.springboot.controller: debug
+#    ?????????
+    ebook: debug
+

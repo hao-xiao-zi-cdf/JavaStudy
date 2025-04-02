@@ -1,0 +1,9 @@
+spring:
+  profiles:
+    # 启用的主环境
+    active: pro
+    # 环境对应所需要子环境
+    group:
+      "dev": devDB,devMVC
+      "pro": proDB,proMVC
+      "test": testDB,testMVC
