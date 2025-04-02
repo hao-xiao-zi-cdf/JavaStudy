@@ -5,3 +5,5 @@ logging:
     rollingpolicy:
       max-file-size: 3KB
       file-name-pattern: server.%d{yyyy-MM-dd}.%i.log
+server:
+  port: 80
