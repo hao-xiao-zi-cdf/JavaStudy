@@ -1,6 +1,5 @@
 package com.hao_xiao_zi.ssmp.controller;
 
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.hao_xiao_zi.ssmp.controller.utils.R;
 import com.hao_xiao_zi.ssmp.pojo.Book;
 import com.hao_xiao_zi.ssmp.service.BookService;
@@ -25,6 +24,8 @@ public class BookController {
 
     @GetMapping
     public R getAllBook(){
+        System.out.println("你好你好！");
+        System.out.println("你好你好！");
         return new R(true,bookService.getAllBook());
     }
 
