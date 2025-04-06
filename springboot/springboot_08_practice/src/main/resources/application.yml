@@ -9,6 +9,18 @@ spring:
       username: root
       password: root
 
-#mybatis-plus:
-#  configuration:
-#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+testcase:
+  book:
+#    id1: ${random.int}
+#    id2: ${random.int(20)}
+#    id3: ${random.long}
+#    id4: ${random.long(30,40)}
+#    name1: 好处呢${random.value}
+#    name2: ${random.uuid}
+    name: 怪奇物语 ${random.value}
+    type: 奇幻 ${random.value}
+    description: 好扽 ${random.value}

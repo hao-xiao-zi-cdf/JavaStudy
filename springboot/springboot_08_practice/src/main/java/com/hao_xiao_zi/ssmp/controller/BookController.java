@@ -37,7 +37,11 @@ public class BookController {
     }
 
     @PostMapping
-    public R saveBook(@RequestBody Book book){
+    public R saveBook(){
+        Book book = new Book();
+        book.setName("sss");
+        book.setDescription("ssss");
+        book.setType("sss");
         return new R(bookService.saveOrUpdate(book));
     }
 
