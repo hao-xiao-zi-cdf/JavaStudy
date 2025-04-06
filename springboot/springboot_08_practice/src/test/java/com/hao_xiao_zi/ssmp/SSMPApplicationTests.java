@@ -16,6 +16,7 @@ class SSMPApplicationTests {
     @Test
     public void testRandom(){
         System.out.println(book);
+
     }
 
 }
