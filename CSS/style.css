@@ -1,0 +1,14 @@
+/* 元素选择器 */
+p {
+    background-color:antiquewhite;
+}
+/* 类选择器 */
+.c1 {
+    background-color: aliceblue;
+}
+/* id选择器 */
+#p3 {
+    background-color: aquamarine;
+    /* 隐藏元素 */
+    display:block
+}
