@@ -44,7 +44,8 @@ class SpringdataredisDemoApplicationTests {
         
         //存入redis
         redisTemplate.opsForValue().set("user:3",userJson);
-        
+
+
         //取出数据
         String s = redisTemplate.opsForValue().get("user:3");
 
