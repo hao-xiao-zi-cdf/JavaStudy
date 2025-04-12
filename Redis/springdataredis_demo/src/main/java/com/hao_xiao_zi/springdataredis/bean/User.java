@@ -14,7 +14,6 @@ import org.springframework.stereotype.Component;
  */
 public class User {
     private String username;
-    private String sex;
     private Integer age;
 
     public String getUsername() {
@@ -23,14 +22,6 @@ public class User {
 
     public void setUsername(String username) {
         this.username = username;
-    }
-
-    public String getSex() {
-        return sex;
-    }
-
-    public void setSex(String sex) {
-        this.sex = sex;
     }
 
     public Integer getAge() {
@@ -44,9 +35,8 @@ public class User {
     public User() {
     }
 
-    public User(String username, String sex, Integer age) {
+    public User(String username,Integer age) {
         this.username = username;
-        this.sex = sex;
         this.age = age;
     }
 
@@ -54,7 +44,6 @@ public class User {
     public String toString() {
         return "User{" +
                 "username='" + username + '\'' +
-                ", sex='" + sex + '\'' +
                 ", age=" + age +
                 '}';
     }

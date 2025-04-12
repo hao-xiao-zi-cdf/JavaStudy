@@ -10,8 +10,11 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Result {
+    //是否成功
     private Boolean success;
+    //错误信息
     private String errorMsg;
+    //返回数据
     private Object data;
     private Long total;
 
