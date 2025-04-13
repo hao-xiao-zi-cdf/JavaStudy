@@ -68,6 +68,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
         //5. 判断用户是进行登录还是注册，根据用户手机号查询数据库
         User user = query().eq("phone", phone).one();
 
+
         //6. 判断用户是否存在
         if(user == null){
             //7. 不存在，创建新用户保存到数据库
