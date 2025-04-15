@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>格式验证</title>
+</head>
+<body>
+    <script>
+        window.onload = function(){
+            document.getElementById("button").onclick = function(){
+                var email = document.getElementById("text").value;
+                //创建正则表达式
+                var regExpEmail = new RegExp("^[1-9][0-9]{4,10}@qq\.com$");
+                //使用正则对象的test方法判断是否符合格式
+                var ok = regExpEmail.test(email)
+                if(!ok){
+                    //符合不格式
+                    document.getElementById("span").innerText = "QQ邮箱格式不符合";
+                }
+            }
+            //文本框获得鼠标
+            document.getElementById("text").onfocus = function(){
+                document.getElementById("span").innerText = "";
+            }
+        }
+    </script>
+    <input type="text" id="text">
+    <input type="button" value="验证邮箱格式" id="button">
+    <span id="span"></span>
+</body>
+</html>
