@@ -1,0 +1,19 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eval</title>
+</head>
+<body>
+    <script>
+        //JAVA后端在进行字符串拼接处理后，把JSON字符串返回给前端
+        //现在前端接收到的只是一个普通字符串，可以使用window.eval()函数将字符串解析成JS代码
+        var str = "{\"name\" : \"李四\",\"age\" : 19,\"sex\" : \"男\"}"
+        window.eval("var json = " + str);
+        //访问JSON对象属性
+        document.write("name=" + json.name + " age=" + json.age + " sex=" + json.sex + "<br>");
+    </script>
+</body>
+</html>

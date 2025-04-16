@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>open和close</title>
+</head>
+<body>
+    <script>
+        // window.open：开启窗口
+        // window.close：关闭当前窗口
+    </script>
+    <input type="button" value="打开窗口(新窗口)" onclick="window.open('https://www.baidu.com/index.htm')">
+    <input type="button" value="打开窗口(当前窗口)" onclick="window.open('https://www.baidu.com/index.htm','_self')">
+    <input type="button" value="打开窗口(新窗口)" onclick="window.open('https://www.baidu.com/index.htm','_blank')">
+    <input type="button" value="打开窗口(父窗口)" onclick="window.open('https://www.baidu.com/index.htm','_parent')">
+    <input type="button" value="打开窗口(顶级窗口)" onclick="window.open('https://www.baidu.com/index.htm','_top')">
+
+    <!-- 关闭窗口 -->
+     <input type="button" value="关闭当前窗口" onclick="window.close()">
+</body>
+</html>

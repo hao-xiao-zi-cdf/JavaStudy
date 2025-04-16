@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON</title>
+</head>
+<body>
+    <script>
+        //创建JSON对象
+        var json = {
+            "name" : "张三",
+            "age" : 20,
+            "sex" : "男"
+        }
+        //访问JSON对象属性
+        document.write("name=" + json.name + " age=" + json.age + " sex=" + json.sex + "<br>");
+
+        //创建JSON数组
+        var jsonArr = [{"name" : "李四","age" : 21,"sex" : "男"},
+                       {"name" : "赵六","age" : 22,"sex" : "女"},
+                       {"name" : "刘七","age" : 23,"sex" : "女"}]
+        for(var i = 0;i < jsonArr.length;i++){
+            //访问JSON对象属性
+            document.write("name=" + jsonArr[i].name + " age=" + jsonArr[i].age + " sex=" + jsonArr[i].sex + "<br>");
+        }
+    </script>
+</body>
+</html>

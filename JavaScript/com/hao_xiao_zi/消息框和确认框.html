@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>消息框和确认框</title>
+</head>
+<body>
+    <script>  
+        window.onload = function(){
+            document.getElementById("c").onclick = function(){
+                var OK = window.confirm("是否确认删除操作,一旦删除数据将被销毁");
+                //接收返回值判断是否删除
+                if(OK){
+                    window.alert("正在删除中...");
+                }
+            }
+        }
+    </script>
+    <input type="button" value="弹出消息框" onclick="window.alert('消息框')">
+    <input type="button" value="弹出确认框" id="c">
+</body>
+</html>
