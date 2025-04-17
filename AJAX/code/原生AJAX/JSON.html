@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX JSON</title>
+    <style>
+        #result{
+            width: 400px;
+            height: 100px;
+            border: solid 1px;
+            color:brown;
+        }
+    </style>
+</head>
+<body>
+    <div id="result"></div>
+
+    <script>
+        window.onload = function(){
+            //绑定事件
+            window.onkeydown = function(){
+                //获取AJAX请求对象
+                var xhr = new XMLHttpRequest();
+
+                //设置响应体数据类型
+                xhr.responseType = 'json';
+                
+                //初始化AJAX请求对象
+                xhr.open("GET","http://127.0.0.1:8000/server");
+                //发送AJAX请求
+                xhr.send();   
+                //处理响应内容
+                xhr.onreadystatechange = function(){
+                    //判断是否返回全部响应内容
+                    if(xhr.readyState === 4){
+                        //判断响应状态是否正常
+                        if(xhr.status >= 200 && xhr.status < 300){
+                            //获取服务端返回的JSON字符串,会自动帮转换成JSON对象赋给user
+                            
+                            var user = xhr.response;
+                            document.getElementById("result").innerText = user.username;                      
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>

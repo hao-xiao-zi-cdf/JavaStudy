@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX GET请求</title>
+    <style>
+        #result{
+            width: 200px;
+            height: 100px;
+            border: solid 1px;
+            color:brown;
+        }
+    </style>
+</head>
+<body>
+    <input type="button" value="点击按钮，发送AJAX请求" id="button">
+    <hr>
+    <div id="result"></div>
+
+    <script>
+        window.onload = function(){
+            //获取button元素
+            document.getElementById("button").onclick = function(){
+                //获取AJAX请求对象
+                var xhr = new XMLHttpRequest();
+                //对象初始化 设置请求方式，url
+                xhr.open("GET","http://127.0.0.1:8000/server?username=zhangsan&age=19");
+                //发送AJAX请求
+                xhr.send();
+                //时间绑定，处理响应结果
+                //readystate是XMLHttpRequest的一个属性，表示状态，0 1 2 3 4 
+                //0-对象还未初始化  1-对象完成初始化  2-请求已发送  3-部分响应内容返回  4-响应内容全部返回
+                //onreadystatechange就表示事件：当状态发生改变 
+                xhr.onreadystatechange = function(){
+                    //判断服务端是否返回所有结果
+                    if(xhr.readyState === 4){
+                        //判断响应状态码是否正常
+                        if(xhr.status >= 200 && xhr.status < 300){
+                            //获取响应体
+                            var response = xhr.response;
+                            
+                            //获取响应协议内容(行，头，空，体)
+                            console.log(xhr.status);//状态码
+                            console.log(xhr.statusText);//状态字符串
+                            console.log(xhr.getAllResponseHeaders());//全部响应头内容
+                            console.log(response);//响应体
+
+                            //设置div标签内容为响应内容
+                            document.getElementById("result").innerText = response;
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>

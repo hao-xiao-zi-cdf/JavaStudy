@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>请求取消</title>
+</head>
+<body>
+    <button id="button1">请求发送</button>
+    <button id="button2">请求取消</button>
+    <script>
+        window.onload = function(){
+            var xhr = null;
+            document.getElementById("button1").onclick = function(){
+                xhr = new XMLHttpRequest();
+                xhr.open("GET","http://127.0.0.1:8000/server");
+                xhr.send();
+            }
+            document.getElementById("button2").onclick = function(){
+                xhr.abort();
+            }
+        }
+    </script>
+</body>
+</html>

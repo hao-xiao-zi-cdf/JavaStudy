@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>网络超时和网络异常</title>
+    <style>
+        #result{
+            width: 200px;
+            height: 100px;
+            border: solid 1px;
+            color:brown;
+        }
+    </style>
+</head>
+<body>
+    <input type="button" value="点击按钮，发送AJAX请求" id="button">
+    <hr>
+    <div id="result"></div>
+
+    <script>
+        window.onload = function(){
+            //获取button元素
+            document.getElementById("button").onclick = function(){
+                //获取AJAX请求对象
+                var xhr = new XMLHttpRequest();
+
+                //设置响应体数据类型
+                xhr.responseType = 'json';
+
+                // //设置超时等待时间,超过该时间请求撤销
+                // xhr.timeout = 2000;
+                // //绑定超时事件
+                // xhr.ontimeout = function(){
+                //     alert("网络超时，请稍后重试");
+                // }
+
+                xhr.onerror = function(){
+                    alert("网络异常，请稍后重试");
+                }
+
+                //初始化AJAX请求对象
+                xhr.open("GET","http://127.0.0.1:8000/server");
+                //发送AJAX请求
+                xhr.send();
+                
+                //处理响应内容
+                xhr.onreadystatechange = function(){
+                    //判断是否返回全部响应内容
+                    if(xhr.readyState === 4){
+                        //判断响应状态是否正常
+                        if(xhr.status >= 200 && xhr.status < 300){
+                            //获取服务端返回的JSON字符串,会自动帮转换成JSON对象赋给user
+                            
+                            var user = xhr.response;
+                            document.getElementById("result").innerText = user.username;                      
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>

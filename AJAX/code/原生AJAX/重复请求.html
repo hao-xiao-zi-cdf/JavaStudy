@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>请求重复</title>
+</head>
+<body>
+    <button id="button">请求发送</button>
+    <script>
+        window.onload = function(){  
+            var isSending = false; //是否正在发送请求   
+            var xhr = null;
+            document.getElementById("button").onclick = function(){
+                if(isSending) xhr.abort();
+                    
+                xhr = new XMLHttpRequest();
+                isSending = true; //创建XMLHttpRequest,即正在发送请求
+                xhr.open("GET","http://127.0.0.1:8000/server");
+                xhr.send();
+                xhr.onreadystatechange = function(){
+                    if(xhr.status === 4){
+                        //发送完毕
+                        isSending = false;
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>

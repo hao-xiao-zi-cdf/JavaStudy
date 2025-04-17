@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX POST请求</title>
+    <style>
+        #result{
+            width: 200px;
+            height: 100px;
+            border: solid 1px;
+            color:brown;
+        }
+    </style>
+</head>
+<body>
+    <input type="button" value="点击按钮，发送AJAX请求" id="button">
+    <hr>
+    <div id="result"></div>
+
+    <script>
+        window.onload = function(){
+            //获取button元素
+            document.getElementById("button").onclick = function(){
+                //获取AJAX请求对象
+                var xhr = new XMLHttpRequest();
+                //初始化AJAX请求对象
+                xhr.open("POST","http://127.0.0.1:8000/server");
+                //设置请求头信息
+                // xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
+                xhr.setRequestHeader('username','zhangsan');
+                //发送AJAX请求
+                xhr.send('name=zhangsan&age=20');
+                
+                //处理响应内容
+                xhr.onreadystatechange = function(){
+                    //判断是否返回全部响应内容
+                    if(xhr.readyState === 4){
+                        //判断响应状态是否正常
+                        if(xhr.status >= 200 && xhr.status < 300){
+                            //将响应内容插入到div标签
+                            document.getElementById("result").innerText = xhr.response;
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>
