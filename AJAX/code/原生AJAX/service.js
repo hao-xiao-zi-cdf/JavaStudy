@@ -57,6 +57,28 @@ app.all('/server', (request, response)=>{
     },3000)
 });
 
+//axios 服务
+app.all('/axios-server', (request, response)=>{
+    response.setHeader('Access-Control-Allow-Origin','*');
+    response.setHeader('Access-Control-Allow-Headers','*');
+    var data = {
+        "username" : "张三"
+    }
+    var strJson = JSON.stringify(data);
+    response.send(strJson);
+});
+
+//fetch 服务
+app.all('/fetch-server', (request, response)=>{
+    response.setHeader('Access-Control-Allow-Origin','*');
+    response.setHeader('Access-Control-Allow-Headers','*');
+    var data = {
+        "username" : "张三"
+    }
+    var strJson = JSON.stringify(data);
+    response.send(strJson);
+});
+
 //4. 监听端口启动服务
 app.listen(8000, ()=>{
     console.log("服务已经启动, 8000 端口监听中....");
