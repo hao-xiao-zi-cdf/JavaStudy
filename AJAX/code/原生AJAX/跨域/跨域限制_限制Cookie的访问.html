@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>跨域限制_限制Cookie的访问</title>
+</head>
+<body>
+    <h1>源A页面</h1>
+    <!-- 在当前网页内嵌一个网页 -->
+    <button id="button">获取源B的Cookie</button>
+    <br><br>
+    <iframe id="Bdom" src="https://www.baidu.com/index.htm"></iframe>
+    <script>
+        // 获取源B的DOM
+        document.getElementById("button").onclick = function(){
+            console.log(document.getElementById("Bdom").contentWindow.document.cookie);
+        }
+    </script>
+</body>
+</html>

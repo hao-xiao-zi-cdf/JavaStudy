@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="button">获取响应内容</button>
+    <script>
+        document.getElementById("button").onclick = function(){
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET","http://127.0.0.1:8000/api/hot-event/hot-board/?origin-toutiao_pc");
+
+            xhr.send();
+            xhr.onreadystatechange = function(){
+                //判断服务端是否返回所有结果
+                if(xhr.readyState === 4 && xhr.status === 200){
+                    console.log(xhr.response);
+                }
+            }          
+        }
+    </script>
+</body>
+</html>
