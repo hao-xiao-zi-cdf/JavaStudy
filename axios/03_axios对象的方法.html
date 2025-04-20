@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>axios对象的方法使用</title>
+    <link rel="stylesheet" href="./css/button样式.css">
+    <!-- 引入axios -->
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
+</head>
+<body>
+    <button id="button1">request方法</button>
+    <button id="button2">post方法请求</button>
+    <script>
+        document.getElementById("button1").onclick = function(){
+            //发送AJAX GET请求
+            axios.request({
+                //请求方法
+                method: 'GET',
+                //url
+                url: 'http://localhost:3000/posts/2'
+            }).then(response => {
+                console.log(response);
+            })
+        }
+        document.getElementById("button2").onclick = function(){
+            //发送AJAX GET请求
+            axios.post(
+                'http://localhost:3000/posts',
+                {
+                    "id": 3,
+                    "title": 'hhhhh',
+                    "author": 'hhhhh'
+                }
+            ).then(response => {
+                console.log(response);
+            })
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+/* 基础按钮样式 */
+button {
+    padding: 12px 24px;
+    margin: 8px;
+    border: none;
+    border-radius: 6px;
+    font-family: 'Segoe UI', sans-serif;
+    font-weight: 600;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* 按钮悬停效果 */
+  button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* 按钮点击效果 */
+  button:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* 为每个按钮设置不同颜色 */
+  #button1 {
+    background: linear-gradient(45deg, #4facfe, #00f2fe);
+  }
+  
+  #button2 {
+    background: linear-gradient(45deg, #a6c1ee, #fbc2eb);
+  }
+  
+  #button3 {
+    background: linear-gradient(45deg, #43e97b, #38f9d7);
+  }
+  
+  #button4 {
+    background: linear-gradient(45deg, #ff758c, #ff7eb3);
+  }

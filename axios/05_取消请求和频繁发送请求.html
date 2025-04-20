@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>05_取消请求和频繁发送请求</title>
+    <link rel="stylesheet" href="./css/button样式.css">
+    <!-- 引入axios -->
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
+</head>
+<body>
+    <button id="button1">发送请求</button>
+    <button id="button2">取消请求</button>
+    <script>
+
+        // 1.创建CancelToken
+        const CancelToken = axios.CancelToken;
+        // 3.声明全局变量
+        let cancel = null;
+
+        document.getElementById("button1").onclick = function(){
+            //检查上次发送的请求是否执行完毕
+            if(cancel != null){
+                //取消请求
+                cancel();
+            }
+            //发送AJAX GET请求
+            axios({
+                //请求方法
+                method: 'GET',
+                //url
+                url: 'http://localhost:3000/posts',
+                //2. 添加配置对象属性
+                cancelToken: new CancelToken(function executor(c) {
+                    //4.将c的值赋值给cancel
+                    cancel = c;
+                })
+            }).then(response => {
+                console.log(response);
+            })
+        }
+        //为第二个按钮绑定取消事件
+        document.getElementById("button2").onclick = function(){
+            cancel();
+            cancel = null;
+        }
+    </script>
+</body>
+</html>
