@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-show v-if</title>
+    <style>
+        .box {
+          width: 200px;
+          height: 100px;
+          line-height: 100px;
+          margin: 10px;
+          border: 3px solid #000;
+          text-align: center;
+          border-radius: 5px;
+          box-shadow: 2px 2px 2px #df4040;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+    <!-- v-show和v-if都是根据表达式的值来条件控制元素的显示和隐藏 -->
+    <!-- v-show只是简单的控制css的display样式来隐藏元素 -->
+    <!--v-if底层会将整个元素从文件中移除或添加  -->
+    <!-- v-show适合需要频繁显示或吟唱的场景，v-if适合要么显示或吟唱，无需频繁更换 -->
+    <div id="app">
+        <div v-show="flag" class="box">我是v-show控制的盒子</div>
+        <div v-if="flag" class="box">我是v-if控制的盒子</div>
+    </div>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                flag: false
+            }
+        });
+    </script>
+</body>
+</html>

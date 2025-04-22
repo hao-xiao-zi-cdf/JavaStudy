@@ -3,23 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>v-band</title>
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
 </head>
 <body>
+    <!-- v-bind：用来动态设置元素标签属性的值 -->
     <div id="app">
-        <!-- 注册事件 -->
-        <button v-on:click="count--">-</button>
-        <span>{{ count }}</span>
-        <button v-on:click ="count++">+</button>
+        <img v-bind:src="path">
+        <img :src="path">
     </div>
     <script>
-        new Vue({
-            el : '#app',
-            data : {
-                count : 100
+        const app = new Vue({
+            el: '#app',
+            data: {
+                path: './imgs/10-01.png'
             }
-        })
+        });
     </script>
 </body>
 </html>
