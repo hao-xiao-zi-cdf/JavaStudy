@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>指令修饰符</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+  <!-- 指令修饰符：指通过.指明后缀，不同的后缀对应的不同的操作，其本质底层封装了一些代码，用于简化开发 -->
+  <div id="app">
+    <!-- 按键修饰符keyup.enter底层封装的是监听键盘回车事件 -->
+    <h3>@keyup.enter  →  监听键盘回车事件</h3>
+    <input @keyup.enter="add" v-model="username" type="text"><br>
+    <input @keyup="add1" v-model="username1" type="text">
+  </div>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        username: '',
+        username1: ''
+      },
+      methods: {
+        add(){
+            alert(this.username);
+        },
+        //原始方式
+        add1(event){
+            //判断按下的键是否为回车键
+            if(event.key === 'Enter'){
+                alert("原始方式监听键盘回车事件" + "   " + this.username1);
+            }
+        }
+      }
+    })
+  </script>
+</body>
+</html>
