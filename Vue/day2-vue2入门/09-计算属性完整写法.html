@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    input {
+      width: 30px;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="app">
+    姓：<input type="text" v-model="firstName"> +
+    名：<input type="text" v-model="lastName"> =
+    <span>{{ fullName }}</span><br><br>
+    
+    <button @click="changeName">改名卡</button>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        firstName: '刘',
+        lastName: '备',
+      },
+      methods: {
+        changeName(){
+            this.fullName = '黄忠';
+        }
+      },
+      computed: {
+        //简略写法，只能用来获取新属性值
+        // fullName(){
+        //     return this.firstName + this.lastName;
+        // }
+        //完整写法 获取 + 设置
+        fullName : { 
+            // 获取新属性值，里面编写处理逻辑后返回
+            get(){
+                return this.firstName + this.lastName;
+            },
+            // 设置现有的数据，里面编写设置逻辑
+            // fullName被修改后，自动调用set()函数，会将修改的值以value参数传递进来
+            set(value){
+                this.firstName = value.slice(0,1),
+                this.lastName = value.slice(1);
+            }
+        }
+      }
+    })
+  </script>
+</body>
+</html>
