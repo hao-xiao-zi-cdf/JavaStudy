@@ -54,9 +54,7 @@
         //1.先声明函数，一个函数对应一个新属性，函数的返回值会作为新属性的值   
         totalCount(){
             //2.编写计算逻辑
-            var count = this.list.reduce((sum,item) => 
-                sum += item.num
-            ,0)
+            var count = this.list.reduce((sum,item) => sum += item.num,0)
             return count;
         }
       }

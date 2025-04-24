@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <button @click="count--">-</button>
+        <span id="span">{{count}}</span>
+        <button @click="count++">+</button>
+    </div>
+    <script>
+        // Vue的生命周期：即Vue实例从创建出来到销毁的过程即为生命周期
+        // Vue的生命周期分为4个阶段：1.创建阶段（创建Vue实例，初始化数据并对数据进行监听，使其具备响应特性）
+        //                         2.挂载阶段（根据数据对页面进行模板渲染）
+        //                         3.更新阶段（根据更新的数据对页面进行动态渲染）
+        //                         4.销毁阶段（对Vue实例进行销毁）
+        // 钩子函数：即在对象的生命周期中，到特定时间段，会被自动调用运行的函数称为钩子函数
+        // Vue生命周期中总共有八大钩子函数 
+        // beforeCreate created  分别在Vue实例创建之前，之后执行
+        // beforeMount mounted     分别在模板渲染创建之前，之后执行
+        // beforeUpdate updated   分别在页面更新创建之前，之后执行
+        // beforeDestroy destroy 分别在Vue实例销毁之前，之后执行
+        const app = new Vue({
+            el: '#app',
+            data: {
+                count: 100
+            },
+            //1.创建阶段
+            beforeCreate(){
+                console.log("beforeCreate函数被执行..." + this.count)
+            },
+            created(){
+                //响应式数据初始化完成
+                console.log("created函数被执行..." + this.count)
+                //可以发送初始化渲染请求
+            },
+            //2.挂载阶段
+            beforeMount(){
+                console.log("beforeMount函数被执行...");
+                console.log(document.getElementById("app"));
+            },
+            mounted(){
+                //模板渲染完成
+                console.log("mounted函数被执行...")
+                //可以操作DOM
+                console.log(document.getElementById("app"));
+            },
+            //3.更新阶段
+            beforeUpdate(){
+                console.log("beforeUpdate函数被执行...数据修改了，视图还没有更新")
+                console.log(document.getElementById("span"));
+            },
+            updated(){
+                console.log("updated函数被执行...数据修改了，视图更新了");
+                console.log(document.getElementById("span"));
+            },
+            //4.销毁阶段
+            beforeDestroy(){
+                console.log("beforeDestroy函数被执行...")
+            },
+            destroyed(){
+                console.log("destroyed函数被执行...")
+            }
+        });
+    </script>
+</body>
+</html>
