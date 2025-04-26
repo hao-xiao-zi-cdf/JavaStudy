@@ -8,6 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @MapperScan("com.hao_xiao_zi.ssmp.mapper")
 public class SSMPApplication {
 
+
     public static void main(String[] args) {
         System.setProperty("spring.devtools.restart.enabled","false");
         SpringApplication.run(SSMPApplication.class, args);
