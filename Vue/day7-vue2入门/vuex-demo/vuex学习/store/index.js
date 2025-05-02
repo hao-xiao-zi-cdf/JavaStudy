@@ -21,7 +21,7 @@ const store = new Vuex.Store({
       state.count += 5
     },
     subFive (state) {
-      state.count -= 5
+      state.count -= 10
     },
     changeTitle (state, title) {
       state.title = title
