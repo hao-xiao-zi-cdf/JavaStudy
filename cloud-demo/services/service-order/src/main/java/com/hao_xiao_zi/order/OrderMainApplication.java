@@ -7,6 +7,7 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
 
 import java.util.concurrent.Executor;
@@ -19,6 +20,7 @@ import java.util.concurrent.Executors;
  * Date: 2025-08-18
  * Time: 13:07
  */
+@EnableFeignClients// 启用Feign远程调用客户端
 @EnableDiscoveryClient
 @SpringBootApplication
 public class OrderMainApplication {

@@ -2,6 +2,7 @@ package com.hao_xiao_zi.order.service.impl;
 
 import com.hao_xiao_zi.bean.Order;
 import com.hao_xiao_zi.bean.Product;
+import com.hao_xiao_zi.order.feign.ProductFeignClient;
 import com.hao_xiao_zi.order.service.OrderIService;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
@@ -34,13 +35,17 @@ public class OrderService implements OrderIService {
     @Resource
     public LoadBalancerClient loadBalancerClient;
 
+    @Resource
+    public ProductFeignClient productFeignClient;
+
     @Override
     public Order createOrderById(Long productId, Long userId) {
         Order order = new Order();
         // 调用远程服务获取商品信息
 //        Product product = procedureCallProduct(productId);
 //        Product product = procedureCallProductWithLoadBalancer(productId);
-        Product product = procedureCallProductWithLoadBalancer1(productId);
+//        Product product = procedureCallProductWithLoadBalancer1(productId);
+        Product product = productFeignClient.getProductById(productId);
         order.setId(productId);
         order.setTotalAmount(product.getPrice());
         order.setUserId(userId);
