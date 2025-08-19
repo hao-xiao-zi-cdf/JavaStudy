@@ -1,5 +1,7 @@
 package com.hao_xiao_zi.order.service.impl;
 
+import com.alibaba.csp.sentinel.annotation.SentinelResource;
+import com.alibaba.csp.sentinel.slots.block.BlockException;
 import com.hao_xiao_zi.bean.Order;
 import com.hao_xiao_zi.bean.Product;
 import com.hao_xiao_zi.order.feign.ProductFeignClient;
@@ -12,6 +14,8 @@ import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.math.BigDecimal;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -38,6 +42,7 @@ public class OrderService implements OrderIService {
     @Resource
     public ProductFeignClient productFeignClient;
 
+    @SentinelResource(value = "createOrder",blockHandler = "createOrderBlockHandler")
     @Override
     public Order createOrderById(Long productId, Long userId) {
         Order order = new Order();
@@ -52,6 +57,24 @@ public class OrderService implements OrderIService {
         order.setNickName("xxx");
         order.setAddress("aaa");
         order.setProductList(Collections.singletonList(product));
+        return order;
+    }
+
+    /**
+     * 被@SentinelResource注解标记的资源，违反规则触发兜底回调函数
+     * @param productId 商品id
+     * @param userId 用户id
+     * @param e 异常
+     * @return 订单
+     */
+    private Order createOrderBlockHandler(Long productId, Long userId, BlockException e) {
+        Order order = new Order();
+        order.setId(productId);
+        order.setTotalAmount(new BigDecimal(-1));
+        order.setUserId(userId);
+        order.setNickName("兜底数据");
+        order.setAddress("兜底地址");
+        order.setProductList(Collections.emptyList());
         return order;
     }
 

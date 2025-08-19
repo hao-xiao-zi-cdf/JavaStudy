@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.*;
  */
 //@RefreshScope
 @RestController
-@RequestMapping("/order")
+@RequestMapping("/api/order")
 public class OrderController {
 
     @Resource
@@ -33,7 +33,7 @@ public class OrderController {
     @Resource
     private OrderProperties orderProperties;
 
-    @GetMapping
+    @GetMapping("/create")
     public Order createOrder(@RequestParam Long productId,@RequestParam Long userId) {
         return orderService.createOrderById(productId,userId);
     }

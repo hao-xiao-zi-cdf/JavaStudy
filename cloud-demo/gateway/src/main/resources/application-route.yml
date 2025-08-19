@@ -1,0 +1,23 @@
+# 配置路由规则
+spring:
+  cloud:
+    gateway:
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowed-origins: "*"
+            allowed-methods: "*"
+            allowed-headers: "*"
+      routes:
+        - id: order-route
+          # 路由到的服务名
+          uri: lb://service-order
+          # 路径匹配规则
+          predicates:
+            - Path=/api/order/**
+        - id: product-route
+          uri: lb://service-product
+          predicates:
+            - Path=/api/product/**
+      default-filters:
+        - AddResponseHeader=X-Response-Abs, 123

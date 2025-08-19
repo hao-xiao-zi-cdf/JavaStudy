@@ -7,5 +7,11 @@ spring:
       config:
         import-check:
           enabled: false
+    sentinel:
+      transport:
+        # 配置sentinel控制台地址
+        dashboard: localhost:8080
+      # 项目已启动就加载sentinel规则
+      eager: true
 server:
   port: 9000
